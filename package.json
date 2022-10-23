@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "tsnd --respawn --transpile-only ./src/index.ts"
+    "dev": "tsnd --respawn --transpile-only ./src/index.ts",
+    "migrate:dev": "prisma migrate dev --schema src/layers/prisma/schema.prisma"
   },
   "repository": {
     "type": "git",
