@@ -25,12 +25,13 @@ model champions {
 }
 
 model players {
-    id         Int          @id @default(autoincrement())
-    uid        String       @unique @default(uuid())
-    usename    String
-    email      String
-    password   String
-    user_skins user_skins[]
+    id           Int          @id @default(autoincrement())
+    uid          String       @unique @default(uuid())
+    usename      String
+    summonerName String
+    email        String
+    password     String
+    user_skins   user_skins[]
 }
 
 model user_skins {
