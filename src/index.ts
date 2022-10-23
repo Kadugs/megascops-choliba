@@ -1,4 +1,4 @@
-import {app} from './config/express-config';
+import {app} from './configs/express-config';
 import {Request, Response} from 'express';
 
 app.listen(3000, () => {

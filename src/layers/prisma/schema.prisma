@@ -1,0 +1,48 @@
+datasource db {
+    provider = "mysql"
+    url      = env("DATABASE_URL")
+}
+
+generator client {
+    provider      = "prisma-client-js"
+    binaryTargets = ["native", "rhel-openssl-1.0.x"]
+}
+
+model skins {
+    id          Int             @id @default(autoincrement())
+    uid         String          @unique @default(uuid())
+    name        String
+    champion_id Int
+    champion    champions       @relation(fields: [champion_id], references: [id])
+    user_skins  players_skins[]
+    created_at  DateTime
+}
+
+model champions {
+    id         Int      @id @default(autoincrement())
+    uid        String   @unique @default(uuid())
+    name       String
+    skins      skins[]
+    created_at DateTime
+}
+
+model players {
+    id            Int             @id @default(autoincrement())
+    uid           String          @unique @default(uuid())
+    username      String
+    summoner_name String
+    email         String
+    password      String
+    user_skins    players_skins[]
+    created_at    DateTime
+}
+
+model players_skins {
+    id         Int      @id @default(autoincrement())
+    uid        String   @unique @default(uuid())
+    skin_id    Int
+    skin       skins    @relation(fields: [skin_id], references: [id])
+    user_id    Int
+    user       players  @relation(fields: [user_id], references: [id])
+    created_at DateTime
+}
