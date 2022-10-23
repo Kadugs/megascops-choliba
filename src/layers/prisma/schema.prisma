@@ -9,36 +9,40 @@ generator client {
 }
 
 model skins {
-    id          Int          @id @default(autoincrement())
-    uid         String       @unique @default(uuid())
+    id          Int             @id @default(autoincrement())
+    uid         String          @unique @default(uuid())
     name        String
     champion_id Int
-    champion    champions    @relation(fields: [champion_id], references: [id])
-    user_skins  user_skins[]
+    champion    champions       @relation(fields: [champion_id], references: [id])
+    user_skins  players_skins[]
+    created_at  DateTime
 }
 
 model champions {
-    id    Int     @id @default(autoincrement())
-    uid   String  @unique @default(uuid())
-    name  String
-    skins skins[]
+    id         Int      @id @default(autoincrement())
+    uid        String   @unique @default(uuid())
+    name       String
+    skins      skins[]
+    created_at DateTime
 }
 
 model players {
-    id           Int          @id @default(autoincrement())
-    uid          String       @unique @default(uuid())
-    usename      String
-    summonerName String
-    email        String
-    password     String
-    user_skins   user_skins[]
+    id            Int             @id @default(autoincrement())
+    uid           String          @unique @default(uuid())
+    usename       String
+    summoner_name String
+    email         String
+    password      String
+    user_skins    players_skins[]
+    created_at    DateTime
 }
 
-model user_skins {
-    id      Int     @id @default(autoincrement())
-    uid     String  @unique @default(uuid())
-    skin_id Int
-    skin    skins   @relation(fields: [skin_id], references: [id])
-    user_id Int
-    user    players @relation(fields: [user_id], references: [id])
+model players_skins {
+    id         Int      @id @default(autoincrement())
+    uid        String   @unique @default(uuid())
+    skin_id    Int
+    skin       skins    @relation(fields: [skin_id], references: [id])
+    user_id    Int
+    user       players  @relation(fields: [user_id], references: [id])
+    created_at DateTime
 }
