@@ -29,7 +29,7 @@ model champions {
 model players {
     id            Int             @id @default(autoincrement())
     uid           String          @unique @default(uuid())
-    usename       String
+    username      String
     summoner_name String
     email         String
     password      String
