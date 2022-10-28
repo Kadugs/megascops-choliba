@@ -1,12 +1,11 @@
-import {app} from './configs/express-config';
-import {Request, Response} from 'express';
+import { app } from './configs/expressConfig';
+import { Request, Response } from 'express';
+import runApplication from './configs/runApplication';
 
-app.listen(3000, () => {
-	console.log('Server is running on port 3000');
-});
+runApplication(app);
 
-app.get('/bolinha', (req: Request, res: Response) => {
-	res.json({
-		message: 'Hello World'
-	});
+app.get('/skins', (req: Request, res: Response) => {
+  res.json({
+    message: 'Hello World',
+  });
 });
