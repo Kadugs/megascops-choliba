@@ -1,11 +1,6 @@
 import { app } from './configs/expressConfig';
-import { Request, Response } from 'express';
 import runApplication from './configs/runApplication';
-
+import * as skins from './handlers/Skins';
 runApplication(app);
 
-app.get('/skins', (req: Request, res: Response) => {
-  res.json({
-    message: 'Hello World',
-  });
-});
+app.get('/skins', skins.listSkinsHandler);
