@@ -11,7 +11,7 @@ const createSkinHandler = (req: Request, res: Response) => {
     if (!name || !champion_uid) {
       throw new Error('É necessário um nome e um campeão para criar uma skin');
     }
-    const skin = createSkin({ name, champion_uid });
+    const skin = createSkin(name, champion_uid);
     return res.send(skin);
   } catch (err) {
     return res.status(500).send(err);
