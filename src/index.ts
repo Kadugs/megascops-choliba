@@ -5,4 +5,5 @@ import * as champions from './handlers/Champions';
 runApplication(app);
 
 app.get('/skins', skins.listSkinsHandler);
+app.get('skins/:uid', skins.getSkinByUidHandler)
 app.get('/champions', champions.listChampionsHandler);
