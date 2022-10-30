@@ -14,4 +14,14 @@ export default class PlayersRepository {
       }
     });
   }
+
+  async createPlayer(summoner_name: string, username: string, password: string) {
+    return this.db.players.create({
+      data: {
+        summoner_name,
+        username,
+        password
+      }
+    });
+  }
 }
