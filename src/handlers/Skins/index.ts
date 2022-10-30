@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { getSkinByUid } from '../../useCases/Skins/getSkinByUid';
 import { listSkins } from '../../useCases/Skins/listSkins';
 import { createSkin } from '../../useCases/Skins/createSkin';
+import { getSkinsByChampion } from '../../useCases/Skins/getSkinsByChampion';
 
 const createSkinHandler = (req: Request, res: Response) => {
   try {
@@ -38,5 +39,17 @@ const getSkinByUidHandler = (req: Request, res: Response) => {
   }
 };
 
+const getSkinsByChampionHandler = (req: Request, res: Response) => {
+  try {
+    const champion_uid = req.params.uid;
+    if(!champion_uid){
+      throw new Error('É necessário um Uid de campeão para buscar suas skins')
+    }
+    const skins = getSkinsByChampion(champion_uid);
+    return res.send(skins);
+  } catch (err) {
+    return res.status(500).send(err);
+  }
+};
 
-export { createSkinHandler, listSkinsHandler, getSkinByUidHandler };
+export { createSkinHandler, listSkinsHandler, getSkinByUidHandler, getSkinsByChampionHandler };
