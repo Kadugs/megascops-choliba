@@ -54,7 +54,7 @@ This is a League of Legends' skins collection API. These are the tables and meth
         Returns: skin
     GET /api/skins => Returns all skins
     GET /api/skins/:uuid => Returns a skin by uuid
-    GET /api/skins/champion;:uuid => Returns all skins of a champion by uuid
+    GET /api/skins/champion/:uuid => Returns all skins of a champion by uuid
 
 ### players
     POST /api/players

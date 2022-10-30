@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { createPlayer } from '../../useCases/Players/createPlayer';
 import { getPlayerByUid } from '../../useCases/Players/getPlayerByUid';
 import { listPlayers } from '../../useCases/Players/listPlayers';
+import { updatePlayer } from '../../useCases/Players/updatePlayer';
 
 const listPlayersHandler = (req: Request, res: Response) => {
   try {
@@ -44,4 +45,18 @@ const createPlayerHandler = (req: Request, res: Response) => {
   }
 };
 
-export { listPlayersHandler, getPlayerByUidHandler, createPlayerHandler };
+const updatePlayerHandler = (req: Request, res: Response) => {
+  try {
+    const uid = req.params.uid;
+    const body = req.body;
+    if(!uid){
+      throw new Error('É necessário um Uid para atualizar um jogador');
+    }
+    const player = updatePlayer(uid, body);
+    return res.send(player);
+  } catch (err) {
+    return res.status(500).send(err);
+  }
+};
+
+export { createPlayerHandler, listPlayersHandler, getPlayerByUidHandler, updatePlayerHandler };
