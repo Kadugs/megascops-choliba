@@ -8,8 +8,8 @@ runApplication(app);
 
 app.post('/skins', skins.createSkinHandler);
 app.get('/skins', skins.listSkinsHandler);
+app.get('/skins/champion/:uid', skins.getSkinsByChampionHandler);
 app.get('/skins/:uid', skins.getSkinByUidHandler)
-
 app.post('/champions', champions.createChampionHandler);
 app.get('/champions', champions.listChampionsHandler);
 app.get('/champions/:uid', champions.getChampionByUidHandler);

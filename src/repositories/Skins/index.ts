@@ -29,4 +29,12 @@ export default class SkinsRepository {
     });
   }
 
+  async getSkinsByChampion(champion_uid: string) {
+    return this.db.skins.findMany({
+      where: {
+        champion_uid
+      }
+    });
+  }
+
 }
