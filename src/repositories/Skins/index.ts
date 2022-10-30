@@ -4,6 +4,15 @@ export default class SkinsRepository {
   private readonly db = DBClient.getInstance().prisma;
 
   async getAllSkins() {
-    return this.db.applications.findMany();
+    return this.db.skins.findMany();
   }
+
+  async getSkinByUid(uid: string) {
+    return this.db.skins.findFirst({
+      where: {
+        uid
+      }
+    });
+  }
+
 }
