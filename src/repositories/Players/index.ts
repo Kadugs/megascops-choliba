@@ -7,4 +7,11 @@ export default class PlayersRepository {
     return this.db.players.findMany();
   }
 
+  async getPlayerByUid(uid: string) {
+    return this.db.players.findFirst({
+      where: {
+        uid
+      }
+    });
+  }
 }
