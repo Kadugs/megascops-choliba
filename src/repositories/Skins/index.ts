@@ -3,6 +3,20 @@ import DBClient from '../DBClient';
 export default class SkinsRepository {
   private readonly db = DBClient.getInstance().prisma;
 
+  async createSkin(name: string, champion_uid: string) {
+    const skin = await this.db.skin.create({
+      data: {
+        name,
+        champion: {
+          connect: {
+            uid: champion_uid,
+          },
+        },
+      },
+    });
+    return skin;
+  }
+
   async getAllSkins() {
     return this.db.skins.findMany();
   }

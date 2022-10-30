@@ -1,6 +1,20 @@
 import { Request, Response } from 'express';
 import { getSkinByUid } from '../../useCases/Skins/getSkinByUid';
 import { listSkins } from '../../useCases/Skins/listSkins';
+import { createSkin } from '../../useCases/Skins/createSkin';
+
+const createSkinHandler = (req: Request, res: Response) => {
+  try {
+    const { name, champion_uid } = req.body;
+    if(!name || !champion_uid){
+      throw new Error('É necessário um nome e um campeão para criar uma skin')
+    }
+    const skin = createSkin({ name, champion_uid });
+    return res.send(skin);
+  } catch (err) {
+    return res.status(500).send(err);
+  }  
+}
 
 const listSkinsHandler = (req: Request, res: Response) => {
   try {
@@ -25,4 +39,4 @@ const getSkinByUidHandler = (req: Request, res: Response) => {
 };
 
 
-export { listSkinsHandler, getSkinByUidHandler };
+export { createSkinHandler, listSkinsHandler, getSkinByUidHandler };

@@ -6,8 +6,9 @@ import * as players from './handlers/Players';
 
 runApplication(app);
 
+app.post('/skins', skins.createSkinHandler);
 app.get('/skins', skins.listSkinsHandler);
-app.get('skins/:uid', skins.getSkinByUidHandler)
+app.get('/skins/:uid', skins.getSkinByUidHandler)
 app.get('/champions', champions.listChampionsHandler);
 app.get('/champions/:uid', champions.getChampionByUidHandler);
 app.post('/champions', champions.createChampionHandler);
