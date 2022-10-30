@@ -13,3 +13,4 @@ app.get('/champions/:uid', champions.getChampionByUidHandler);
 app.post('/champions', champions.createChampionHandler);
 app.get('/player', players.listPlayersHandler);
 app.get('/player/:uid', players.getPlayerByUidHandler);
+app.post('/player', players.createPlayerHandler);
